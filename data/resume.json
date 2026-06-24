@@ -1,0 +1,119 @@
+{
+  "name": "Yash Charde",
+  "title": "AI / ML Engineer",
+  "tagline": "Building intelligent, production-grade AI systems.",
+  "summary": "AI/ML engineer focused on LLM applications, multi-agent systems, and retrieval-augmented generation. I design and ship production-ready pipelines with LangChain, LangGraph, and FastAPI — from offline RAG to stateful agent workflows and adversarial red-teaming.",
+  "availability": "Available for Full-Time Roles",
+  "location": "Pune, Maharashtra, India",
+  "openToRemote": true,
+  "contact": {
+    "email": "yashraj.charde@gmail.com",
+    "phone": "+91-9479686130",
+    "linkedin": "https://www.linkedin.com/in/yash-charde-935976254",
+    "github": "https://github.com/yashcharde11"
+  },
+  "stats": [
+    {
+      "label": "Current Role",
+      "value": "AI/ML Intern",
+      "detail": "Orion Innovation, Pune"
+    },
+    {
+      "label": "Degree",
+      "value": "B.Tech Artificial Intelligence",
+      "detail": "CGPA 8.77 / 10"
+    },
+    {
+      "label": "Core Stack",
+      "value": "Agentic Frameworks · Gen AI · RAG",
+      "detail": "AI Agents · Autonomous Agents · Python"
+    },
+    {
+      "label": "Location",
+      "value": "Pune, Maharashtra, India",
+      "detail": "Remote · Hybrid · On-site"
+    }
+  ],
+  "skills": [
+    {
+      "group": "AI / LLM",
+      "items": [
+        "LangChain",
+        "LangGraph",
+        "RAG Pipelines",
+        "Prompt Engineering",
+        "Red-teaming",
+        "Anthropic Claude API",
+        "MCP",
+        "Microsoft Agent Framework"
+      ]
+    },
+    {
+      "group": "ML / NLP",
+      "items": ["Machine Learning", "Scikit-learn", "NLTK", "Transformers"]
+    },
+    {
+      "group": "Languages",
+      "items": ["Python", "SQL"]
+    },
+    {
+      "group": "Data & Analytics",
+      "items": ["Pandas", "NumPy", "Matplotlib", "Power BI", "Tableau", "Excel"]
+    },
+    {
+      "group": "Databases",
+      "items": ["PostgreSQL", "MySQL", "ChromaDB", "Vector Databases"]
+    },
+    {
+      "group": "Backend & Tools",
+      "items": ["FastAPI", "Flask", "Streamlit", "REST APIs", "Git", "Claude Code"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech, Artificial Intelligence",
+      "school": "St. Vincent Pallotti College of Engineering and Technology",
+      "score": "CGPA 8.77 / 10",
+      "year": "2022 – 2026"
+    },
+    {
+      "degree": "HSC",
+      "school": "Macro Vision Academy, Madhya Pradesh",
+      "score": "89.2%",
+      "year": "2021"
+    },
+    {
+      "degree": "SSC",
+      "school": "RD Public School",
+      "score": "93.6%",
+      "year": "2019"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Natural Language Processing",
+      "issuer": "NPTEL · IIT Kharagpur",
+      "year": "2024"
+    },
+    {
+      "name": "Business Intelligence & Analytics",
+      "issuer": "NPTEL · IIT Madras",
+      "year": "2024"
+    },
+    {
+      "name": "Introduction to Claude",
+      "issuer": "Anthropic",
+      "year": ""
+    },
+    {
+      "name": "Claude Code — Introduction",
+      "issuer": "Anthropic",
+      "year": ""
+    },
+    {
+      "name": "Get Started with Generative AI",
+      "issuer": "Intel Unnati",
+      "year": "2025"
+    }
+  ]
+}

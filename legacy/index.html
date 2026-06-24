@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yash Charde — AI/ML Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #161616;
+      --border: #222;
+      --text: #e8e4dc;
+      --muted: #666;
+      --accent: #c8b97e;
+      --accent-dim: rgba(200,185,126,0.1);
+      --accent-border: rgba(200,185,126,0.25);
+      --green: #4caf7d;
+      --green-dim: rgba(76,175,125,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-grid {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .hero-left {}
+    .hero-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-dim);
+      border: 1px solid rgba(76,175,125,0.2);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1.75rem;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      color: var(--muted);
+      font-size: 0.97rem;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.82rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0f0f0f;
+      border: 1px solid var(--accent);
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: #d4c78e; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: #444; }
+
+    .hero-right {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1.2rem;
+      opacity: 0; transform: translateX(20px);
+      animation: slideIn 0.5s forwards;
+    }
+    .stat-card:nth-child(1) { animation-delay: 0.2s; }
+    .stat-card:nth-child(2) { animation-delay: 0.35s; }
+    .stat-card:nth-child(3) { animation-delay: 0.5s; }
+    .stat-card:nth-child(4) { animation-delay: 0.65s; }
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .stat-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+    .stat-value { font-size: 0.9rem; color: var(--text); font-weight: 400; }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 5rem 3rem;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 3rem;
+      color: var(--text);
+    }
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { border-top: 1px solid var(--border); }
+    .projects-intro {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: -1.5rem;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .project-card {
+      background: var(--surface);
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+      position: relative;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .project-card:hover { background: #1c1c1c; }
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(2px, -2px); }
+    .project-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      background: var(--bg);
+    }
+    .project-arrow {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      color: var(--accent);
+      font-size: 1rem;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+    .featured-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { border-top: 1px solid var(--border); }
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-meta {}
+    .exp-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+    }
+    .exp-company {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .exp-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .exp-points {
+      list-style: none; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .exp-points li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.7;
+    }
+    .exp-points li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+    .exp-highlight {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── SKILLS ── */
+    #skills { border-top: 1px solid var(--border); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .skill-group {
+      background: var(--surface);
+      padding: 1.75rem;
+    }
+    .skill-group-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .skill-pills {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .skill-pill {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    /* ── EDUCATION ── */
+    #education { border-top: 1px solid var(--border); }
+    .edu-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .edu-item {
+      background: var(--surface);
+      padding: 1.75rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: start;
+    }
+    .edu-degree {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .edu-school {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .edu-score {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .edu-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 0.2rem;
+    }
+
+    /* ── CERTIFICATES ── */
+    #certs { border-top: 1px solid var(--border); }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cert-card:hover { border-color: var(--accent-border); background: #1c1c1c; }
+    .cert-icon {
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .cert-name {
+      font-size: 0.82rem;
+      color: var(--text);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .cert-issuer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTACT / FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 4rem 3rem;
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;
+    }
+    .footer-left h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .footer-left p { font-size: 0.85rem; color: var(--muted); }
+    .footer-links {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .footer-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+    .footer-link:hover { color: var(--text); border-color: #444; }
+    .footer-copy {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem; padding-top: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      display: flex; justify-content: space-between;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      header { padding: 6rem 1.5rem 3rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      section { padding: 3.5rem 1.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      footer { padding: 3rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Yash Charde</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certs">Certs</a></li>
+  </ul>
+  <a href="mailto:yashraj.charde@gmail.com" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.75rem;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <span class="hero-tag">● Available for Full-Time Roles</span>
+      <h1>Building <em>Intelligent</em><br/>AI Systems</h1>
+      <p class="hero-desc">
+        Final-year B.Tech AI student specialising in LLM-powered agents, RAG pipelines, and AI security. I turn research into production-ready systems.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+        <a href="https://linkedin.com/in/yash-charde-935976254" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+        <a href="https://github.com/yashcharde11" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div>
+          <div class="stat-label">Current Role</div>
+          <div class="stat-value">AI/ML Intern · Orion Innovation, Pune</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div>
+          <div class="stat-label">Degree · CGPA</div>
+          <div class="stat-value">B.Tech Artificial Intelligence · 8.77 / 10</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🛠</div>
+        <div>
+          <div class="stat-label">Core Stack</div>
+          <div class="stat-value">Python · LangChain · LangGraph · FastAPI · RAG</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📍</div>
+        <div>
+          <div class="stat-label">Location</div>
+          <div class="stat-value">Maharashtra, India · Open to Remote</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// Featured Work</p>
+  <h2>Projects</h2>
+  <p class="projects-intro">
+    A focused set of AI/ML projects — from production-grade multi-agent systems to large-scale data engineering. Each one solves a concrete problem.
+  </p>
+
+  <div class="projects-grid">
+
+    <!-- P1 -->
+    <a href="https://tinyurl.com/yash111003" target="_blank" class="project-card">
+      <span class="project-arrow">↗</span>
+      <span class="project-number">01</span>
+      <div>
+        <div class="featured-badge">★ Featured</div>
+        <div class="project-title">Hotel Management AI Chatbot</div>
+      </div>
+      <p class="project-desc">
+        Architected a multi-agent AI system for automated guest services using LangChain + Groq Llama 3.3 with Role-Based Access Control. Designed a relational database schema via SQLAlchemy ORM and automated reporting distributed over SMTP.
+      </p>
+      <div class="project-tags">
+        <span class="tag">LangChain</span>
+        <span class="tag">Multi-Agent</span>
+        <span class="tag">Llama 3.3</span>
+        <span class="tag">RBAC</span>
+        <span class="tag">SQLAlchemy</span>
+        <span class="tag">APScheduler</span>
+      </div>
+    </a>
+
+    <!-- P2 -->
+    <a href="https://tinyurl.com/7f8ybhve" target="_blank" class="project-card">
+      <span class="project-arrow">↗</span>
+      <span class="project-number">02</span>
+      <div>
+        <div class="featured-badge">★ Featured</div>
+        <div class="project-title">Large-Scale City Partitioning</div>
+      </div>
+      <p class="project-desc">
+        Processed a 6 GB city-scale dataset using Mini-Batch K-Means with incremental partial-fit, segmenting geographic regions without ever loading the full dataset into memory — enabling unsupervised spatial analysis at scale.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Unsupervised ML</span>
+        <span class="tag">Mini-Batch K-Means</span>
+        <span class="tag">6 GB Dataset</span>
+        <span class="tag">Python</span>
+        <span class="tag">Scikit-learn</span>
+      </div>
+    </a>
+
+    <!-- P3 -->
+    <a href="https://tinyurl.com/cricket4321" target="_blank" class="project-card">
+      <span class="project-arrow">↗</span>
+      <span class="project-number">03</span>
+      <div class="project-title">Cricket Player Performance Dashboard</div>
+      <p class="project-desc">
+        Engineered a comprehensive cricket analytics dashboard in Power BI, transforming 5,000+ raw data points from Excel into automated KPIs — Strike Rate, Average, Boundary Frequency — using Power Query for the full ETL pipeline.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Power Query</span>
+        <span class="tag">Data Analytics</span>
+        <span class="tag">5K+ Data Points</span>
+      </div>
+    </a>
+
+    <!-- P4 — RAG from internship -->
+    <div class="project-card" style="cursor:default;">
+      <span class="project-number">04</span>
+      <div>
+        <div class="featured-badge">Research · VNIT Nagpur</div>
+        <div class="project-title">RAG-Based Conversational AI System</div>
+      </div>
+      <p class="project-desc">
+        Designed and deployed a fully offline RAG pipeline using LangChain, Ollama, and ChromaDB. Enables accurate, context-aware Q&A over institutional PDF documents — no cloud API dependency.
+      </p>
+      <div class="project-tags">
+        <span class="tag">RAG</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">Ollama</span>
+        <span class="tag">ChromaDB</span>
+        <span class="tag">Offline LLM</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">// Work History</p>
+  <h2>Experience</h2>
+
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jan 2026 – Present</div>
+        <div class="exp-company">Orion Innovation · Pune</div>
+      </div>
+      <div>
+        <div class="exp-role">AI/ML Intern</div>
+        <ul class="exp-points">
+          <li>Engineered stateful multi-step AI workflows using <span class="exp-highlight">LangGraph</span> with conditional branching and persistent memory — replacing a manual process and reducing task completion time by <span class="exp-highlight">35%</span>.</li>
+          <li>Orchestrated <span class="exp-highlight">10+ agent collaboration</span> for adversarial red-teaming of LLM systems, improving vulnerability detection coverage by <span class="exp-highlight">45%</span> through automated simulation of prompt injections, jailbreaks, and unsafe outputs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jun 2025 – Jul 2025</div>
+        <div class="exp-company">VNIT Nagpur · Research</div>
+      </div>
+      <div>
+        <div class="exp-role">Research Intern</div>
+        <ul class="exp-points">
+          <li>Designed and deployed a <span class="exp-highlight">RAG-based conversational AI</span> using LangChain, Ollama, and ChromaDB for accurate Q&A over institutional PDF documents — entirely offline, no cloud API dependency.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">// Technical Skills</p>
+  <h2>Skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">AI / LLM</div>
+      <div class="skill-pills">
+        <span class="skill-pill">LangChain</span>
+        <span class="skill-pill">LangGraph</span>
+        <span class="skill-pill">RAG Pipelines</span>
+        <span class="skill-pill">Prompt Engineering</span>
+        <span class="skill-pill">Red-teaming</span>
+        <span class="skill-pill">Anthropic Claude API</span>
+        <span class="skill-pill">MCP</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ML / NLP</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Machine Learning</span>
+        <span class="skill-pill">Scikit-learn</span>
+        <span class="skill-pill">NLTK</span>
+        <span class="skill-pill">Transformers</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data & Analytics</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Pandas</span>
+        <span class="skill-pill">NumPy</span>
+        <span class="skill-pill">Matplotlib</span>
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Tableau</span>
+        <span class="skill-pill">Excel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Databases</div>
+      <div class="skill-pills">
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">ChromaDB</span>
+        <span class="skill-pill">Vector Databases</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Backend & Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">FastAPI</span>
+        <span class="skill-pill">Flask</span>
+        <span class="skill-pill">Streamlit</span>
+        <span class="skill-pill">REST APIs</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Claude Code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">// Academic Background</p>
+  <h2>Education</h2>
+
+  <div class="edu-list">
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">B.Tech — Artificial Intelligence</div>
+        <div class="edu-school">St. Vincent Pallotti College of Engineering and Technology</div>
+      </div>
+      <div>
+        <div class="edu-score">CGPA 8.77 / 10</div>
+        <div class="edu-year">2022 – 2026</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">HSC (Higher Secondary)</div>
+        <div class="edu-school">Macro Vision Academy, Madhya Pradesh</div>
+      </div>
+      <div>
+        <div class="edu-score">89.2%</div>
+        <div class="edu-year">2021</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">SSC (Secondary School)</div>
+        <div class="edu-school">RD Public School</div>
+      </div>
+      <div>
+        <div class="edu-score">93.6%</div>
+        <div class="edu-year">2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certs">
+  <p class="section-label">// Certifications</p>
+  <h2>Certificates & Courses</h2>
+
+  <div class="certs-grid">
+    <a href="https://nptel.ac.in" target="_blank" class="cert-card">
+      <span class="cert-icon">📜</span>
+      <div>
+        <div class="cert-name">Natural Language Processing</div>
+        <div class="cert-issuer">NPTEL · IIT Kharagpur · 2024</div>
+      </div>
+    </a>
+    <a href="https://nptel.ac.in" target="_blank" class="cert-card">
+      <span class="cert-icon">📊</span>
+      <div>
+        <div class="cert-name">Business Intelligence &amp; Analytics</div>
+        <div class="cert-issuer">NPTEL · IIT Madras · 2024</div>
+      </div>
+    </a>
+    <a href="#" target="_blank" class="cert-card">
+      <span class="cert-icon">🤖</span>
+      <div>
+        <div class="cert-name">Claude — Introduction to Claude</div>
+        <div class="cert-issuer">Anthropic · Claude 101</div>
+      </div>
+    </a>
+    <a href="#" target="_blank" class="cert-card">
+      <span class="cert-icon">💻</span>
+      <div>
+        <div class="cert-name">Claude Code — Introduction</div>
+        <div class="cert-issuer">Anthropic · Claude Code 101</div>
+      </div>
+    </a>
+    <a href="#" target="_blank" class="cert-card">
+      <span class="cert-icon">🧠</span>
+      <div>
+        <div class="cert-name">Get Started with Generative AI</div>
+        <div class="cert-issuer">Intel Unnati · 2025</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer>
+  <div class="footer-left">
+    <h3>Let's build something.</h3>
+    <p style="color:var(--muted);font-size:0.85rem;">Open to full-time AI/ML engineering roles — India or remote.</p>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:yashraj.charde@gmail.com" class="footer-link">✉ Email</a>
+    <a href="https://linkedin.com/in/yash-charde-935976254" target="_blank" class="footer-link">↗ LinkedIn</a>
+    <a href="https://github.com/yashcharde11" target="_blank" class="footer-link">↗ GitHub</a>
+    <a href="tel:+919479686130" class="footer-link">📞 Call</a>
+  </div>
+  <div class="footer-copy">
+    <span>© 2025 Yash Charde. All rights reserved.</span>
+    <span>Built for Vercel</span>
+  </div>
+</footer>
+
+</body>
+</html>

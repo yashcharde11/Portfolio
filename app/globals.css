@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /*
+   * LIGHT — airy, near-white base with a cool tint and a violet→cyan accent.
+   * The futuristic feel comes from glow orbs + glass surfaces over this base.
+   */
+  :root {
+    --background: 240 33% 99%;
+    --foreground: 240 25% 9%;
+
+    --card: 240 30% 100%;
+    --card-foreground: 240 25% 9%;
+
+    --muted: 240 16% 95%;
+    /* darker grey so secondary text stays clearly readable on the light bg */
+    --muted-foreground: 240 12% 30%;
+
+    --primary: 258 88% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 16% 94%;
+    --secondary-foreground: 240 25% 12%;
+
+    --accent: 258 88% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 16% 90%;
+    --input: 240 16% 90%;
+    --ring: 258 88% 60%;
+
+    --radius: 1rem;
+  }
+
+  /*
+   * DARK — deep, near-black navy with bright violet accents and stronger glow.
+   * This is the default look (set on <html> by next-themes).
+   */
+  .dark {
+    --background: 240 30% 4%;
+    --foreground: 240 20% 96%;
+
+    --card: 240 24% 8%;
+    --card-foreground: 240 20% 96%;
+
+    --muted: 240 18% 14%;
+    --muted-foreground: 240 12% 64%;
+
+    --primary: 256 92% 70%;
+    --primary-foreground: 240 30% 6%;
+
+    --secondary: 240 18% 14%;
+    --secondary-foreground: 240 20% 96%;
+
+    --accent: 256 92% 70%;
+    --accent-foreground: 240 30% 6%;
+
+    --border: 240 18% 16%;
+    --input: 240 18% 18%;
+    --ring: 256 92% 70%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+}
+
+@layer utilities {
+  /* dotted grid used by the ambient backdrop */
+  .bg-grid {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.07) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+
+  /* gradient text helper */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-fuchsia-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+}
+
+/* Background motion — pure CSS so it never causes SSR hydration mismatches. */
+@keyframes grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 28px 28px;
+  }
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(calc(var(--drift, 24px) * -1));
+    opacity: 0.7;
+  }
+}
+
+.animate-grid-pan {
+  animation: grid-pan 16s linear infinite;
+}
+
+/* fancy animated gradient title — colours flow continuously across the text */
+@keyframes title-flow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.animated-title {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    #d946ef,
+    #22d3ee,
+    hsl(var(--primary))
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: title-flow 4s linear infinite;
+}
+
+/* longhands only — per-particle duration/delay are set inline */
+.animate-particle-float {
+  animation-name: particle-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-grid-pan,
+  .animate-particle-float,
+  .animated-title {
+    animation: none !important;
+  }
+}
+
+/* thin, themed scrollbar inside the chat panel */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+}

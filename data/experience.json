@@ -1,0 +1,54 @@
+[
+  {
+    "role": "AI/ML Intern",
+    "company": "Orion Innovation",
+    "logo": "/images/orion-logo.jpeg",
+    "location": "Pune, India",
+    "period": "Jan 2026 – Jul 2026 (6 months)",
+    "current": false,
+    "highlights": [
+      {
+        "text": "Built an autonomous Data Analyst Agent on an enterprise multi-agent platform — users upload any Excel/CSV, ask a question in plain English, and receive a styled, multi-sheet Excel report with zero manual analysis."
+      },
+      {
+        "text": "Cut manual work for the support team by",
+        "metric": "40%",
+        "suffix": "while accelerating overall task completion."
+      },
+      {
+        "text": "Architected a",
+        "metric": "7-stage",
+        "suffix": "multi-agent pipeline (query refinement, data validation, analysis, business insights, reasoning, and report generation) on Python, Azure OpenAI, and the Microsoft Agent Framework — coordinated by a single orchestrator."
+      },
+      {
+        "text": "Guaranteed analytical accuracy by computing every statistic in Pandas and DuckDB instead of letting the model guess, with a self-healing retry guard that reruns reasoning up to",
+        "metric": "3×",
+        "suffix": "until the JSON output passes validation."
+      },
+      {
+        "text": "Made agent behavior fully configurable through plain-text prompt files, letting teammates tune logic without touching code."
+      },
+      {
+        "text": "Engineered stateful multi-step AI workflows with LangGraph (conditional branching, persistent memory), reducing task completion time by",
+        "metric": "35%"
+      },
+      {
+        "text": "Orchestrated 10+ agent collaboration for adversarial red-teaming, improving vulnerability detection coverage by",
+        "metric": "45%",
+        "suffix": "via automated prompt-injection and jailbreak simulation."
+      }
+    ]
+  },
+  {
+    "role": "Research Intern",
+    "company": "VNIT Nagpur",
+    "location": "Nagpur, India",
+    "period": "Jun 2025 – Jul 2025",
+    "current": false,
+    "highlights": [
+      {
+        "text": "Designed and deployed an offline RAG-based conversational AI (LangChain + Ollama + ChromaDB) for institutional PDF Q&A with zero cloud dependency."
+      }
+    ]
+  }
+]

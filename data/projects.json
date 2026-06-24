@@ -1,0 +1,35 @@
+[
+  {
+    "number": "01",
+    "title": "Hotel Management AI Chatbot",
+    "featured": true,
+    "url": "https://tinyurl.com/yash111003",
+    "description": "Multi-agent AI system built with LangChain + Groq Llama 3.3. Implements Role-Based Access Control (RBAC) for automated guest services, with a relational DB schema via SQLAlchemy ORM. Automated reporting is distributed through SMTP and scheduled with APScheduler.",
+    "tags": ["LangChain", "Multi-Agent", "Llama 3.3", "RBAC", "SQLAlchemy", "APScheduler"]
+  },
+  {
+    "number": "02",
+    "title": "Large-Scale City Partitioning",
+    "featured": true,
+    "url": "https://tinyurl.com/7f8ybhve",
+    "description": "Processed a 6 GB city-scale dataset using Mini-Batch K-Means with incremental partial-fit. Segments geographic regions without loading the full dataset into memory — memory-efficient unsupervised ML at scale.",
+    "tags": ["Unsupervised ML", "Mini-Batch K-Means", "6 GB Dataset", "Python", "Scikit-learn"]
+  },
+  {
+    "number": "03",
+    "title": "Cricket Player Performance Dashboard",
+    "featured": false,
+    "url": "https://tinyurl.com/cricket4321",
+    "description": "Power BI analytics dashboard transforming 5,000+ raw data points from Excel into automated KPIs (Strike Rate, Average, Boundary Frequency) via a Power Query ETL pipeline.",
+    "tags": ["Power BI", "ETL", "Power Query", "Data Analytics", "5K+ Data Points"]
+  },
+  {
+    "number": "04",
+    "title": "RAG-Based Conversational AI System",
+    "featured": false,
+    "badge": "Research · VNIT Nagpur",
+    "url": "",
+    "description": "Fully offline RAG pipeline using LangChain, Ollama, and ChromaDB. Delivers accurate, context-aware Q&A over institutional PDF documents with zero cloud dependency.",
+    "tags": ["RAG", "LangChain", "Ollama", "ChromaDB", "Offline LLM"]
+  }
+]
