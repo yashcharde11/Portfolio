@@ -9,6 +9,24 @@
   },
   {
     "number": "02",
+    "title": "Smart Tool-Routing Assistant",
+    "featured": true,
+    "github": "https://github.com/yashcharde11/Smart-Tool-Routing-Assistant",
+    "demo": "https://smart-tool-routing-assistant-yash.streamlit.app/",
+    "description": "A LangGraph AI agent that first decides HOW to answer a question, then routes it to the right tool — a calculator for math, document search (RAG) for uploaded files, or the LLM directly for general questions. Every answer shows the chosen tool and a one-line reason, so the routing is fully transparent. Reached ~92% routing accuracy across three intent classes on a 55-question labeled set (up from 84% after prompt refinement), measured with per-class F1 and a confusion matrix.",
+    "tags": ["LangGraph", "Azure OpenAI GPT-4.1", "RAG", "ChromaDB", "Streamlit", "Agent Routing"]
+  },
+  {
+    "number": "03",
+    "title": "Smart Meeting & Lecture Notes Agent",
+    "featured": true,
+    "github": "https://github.com/yashcharde11/Smart-Meeting-Lecture-Notes-Agent",
+    "demo": "https://smart-meeting-lecture-notes-agent-yash.streamlit.app/",
+    "description": "An AI note-taker that turns meeting or lecture audio (or a pasted transcript) into a clean summary, the key decisions, and a checklist of action items with owners. Each transcript line is classified as a decision, action, or discussion, so only meaningful content reaches the structured output. Built with Streamlit and faster-whisper for free local transcription plus Azure OpenAI GPT-4.1; achieved ~0.85 action-item F1 and 92% line-classification accuracy on a labeled multi-transcript test set.",
+    "tags": ["Streamlit", "faster-whisper", "Azure OpenAI GPT-4.1", "NLP", "Structured Output"]
+  },
+  {
+    "number": "04",
     "title": "Large-Scale City Partitioning",
     "featured": true,
     "url": "https://tinyurl.com/7f8ybhve",
@@ -16,7 +34,7 @@
     "tags": ["Unsupervised ML", "Mini-Batch K-Means", "6 GB Dataset", "Python", "Scikit-learn"]
   },
   {
-    "number": "03",
+    "number": "05",
     "title": "Cricket Player Performance Dashboard",
     "featured": false,
     "url": "https://tinyurl.com/cricket4321",
@@ -24,7 +42,7 @@
     "tags": ["Power BI", "ETL", "Power Query", "Data Analytics", "5K+ Data Points"]
   },
   {
-    "number": "04",
+    "number": "06",
     "title": "RAG-Based Conversational AI System",
     "featured": false,
     "badge": "Research · VNIT Nagpur",

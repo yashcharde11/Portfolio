@@ -1,19 +1,26 @@
 import { AzureOpenAI } from "openai";
 import { resume, projects, experience } from "@/lib/data";
+import { getAzureOpenAIConfig } from "@/lib/env";
 
 export const runtime = "nodejs";
 
 /** Build a compact, factual knowledge base about Yash for the assistant. */
 function buildKnowledgeBase(): string {
   const projectLines = projects
-    .map(
-      (p) =>
-        `- ${p.title}${p.featured ? " (featured)" : ""}${
-          p.badge ? ` [${p.badge}]` : ""
-        }: ${p.description} Tech: ${p.tags.join(", ")}.${
-          p.url ? ` Link: ${p.url}` : ""
-        }`
-    )
+    .map((p) => {
+      const links = [
+        p.url ? `Link: ${p.url}` : null,
+        p.github ? `GitHub: ${p.github}` : null,
+        p.demo ? `Live Demo: ${p.demo}` : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+      return `- ${p.title}${p.featured ? " (featured)" : ""}${
+        p.badge ? ` [${p.badge}]` : ""
+      }: ${p.description} Tech: ${p.tags.join(", ")}.${
+        links ? ` ${links}` : ""
+      }`;
+    })
     .join("\n");
 
   const experienceLines = experience
@@ -160,10 +167,10 @@ export async function POST(req: Request) {
     });
   }
 
-  const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
-  const apiKey = process.env.AZURE_OPENAI_API_KEY;
-  const apiVersion = process.env.AZURE_OPENAI_API_VERSION;
-  const deployment = process.env.AZURE_OPENAI_CHAT_DEPLOYMENT_NAME;
+  // Resolve credentials through the single, validated config module — secrets
+  // stay in the environment (.env locally / host secret store in prod), and
+  // nothing reads process.env directly here.
+  const azure = getAzureOpenAIConfig();
 
   // 2) Parse + strictly validate the body; reject malformed/oversized input.
   let body: { messages?: IncomingMessage[] };
@@ -202,7 +209,7 @@ export async function POST(req: Request) {
   }
 
   // Graceful fallback: keep the site fully usable without configured credentials.
-  if (!endpoint || !apiKey || !apiVersion || !deployment) {
+  if (!azure) {
     const text = `The live AI assistant isn't configured on this deployment, but here's the short version: ${resume.name} is an ${resume.title} focused on LLM apps, multi-agent systems, and RAG. Reach out at ${resume.contact.email} and he'll be happy to chat.`;
     return new Response(text, {
       headers: { "Content-Type": "text/plain; charset=utf-8" },
@@ -210,10 +217,10 @@ export async function POST(req: Request) {
   }
 
   const client = new AzureOpenAI({
-    endpoint,
-    apiKey,
-    apiVersion,
-    deployment,
+    endpoint: azure.endpoint,
+    apiKey: azure.apiKey,
+    apiVersion: azure.apiVersion,
+    deployment: azure.deployment,
     timeout: 30_000, // fail fast instead of hanging the function
     maxRetries: 1,
   });
@@ -225,7 +232,7 @@ export async function POST(req: Request) {
       try {
         const completion = await client.chat.completions.create({
           // For Azure, the model field is the deployment name.
-          model: deployment,
+          model: azure.deployment,
           stream: true,
           temperature: 0.3,
           max_tokens: 700,

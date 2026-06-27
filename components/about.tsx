@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { GraduationCap, Award, BadgeCheck, MapPin, Globe } from "lucide-react";
 import { resume } from "@/lib/data";
 import { SectionHeading } from "@/components/section-heading";
@@ -8,10 +9,29 @@ import { Badge } from "@/components/ui/badge";
 export function About() {
   return (
     <section id="about" className="container scroll-mt-24 py-24">
-      <SectionHeading
-        title="Engineer, focused on shipping real AI."
-        description={resume.tagline}
-      />
+      <div className="flex flex-col items-center gap-8 text-center sm:gap-10 md:flex-row md:items-center md:gap-12 md:text-left">
+        {/* Professional headshot in a circular gradient frame */}
+        <Reveal className="shrink-0">
+          <div className="group relative">
+            <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-primary via-fuchsia-500 to-cyan-400 opacity-80 blur-[6px] transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="relative h-44 w-44 overflow-hidden rounded-full border-[3px] border-background shadow-xl sm:h-52 sm:w-52">
+              <Image
+                src="/images/my_photo.jpg"
+                alt={`${resume.name} — ${resume.title}`}
+                fill
+                priority
+                sizes="(min-width: 640px) 208px, 176px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
+        </Reveal>
+
+        <SectionHeading
+          title="Engineer, focused on shipping real AI."
+          description={resume.tagline}
+        />
+      </div>
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         {/* Education */}

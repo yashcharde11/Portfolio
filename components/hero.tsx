@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { resume } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -56,9 +57,9 @@ export function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3"
           >
             <Button asChild>
-              <a href="#projects">
-                View Projects <ArrowDown />
-              </a>
+              <Link href="/projects">
+                View Projects <ArrowUpRight />
+              </Link>
             </Button>
             <Button variant="outline" asChild>
               <a href={resume.contact.linkedin} target="_blank" rel="noreferrer">

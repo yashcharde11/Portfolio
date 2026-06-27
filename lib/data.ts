@@ -55,7 +55,12 @@ export interface Project {
   title: string;
   featured: boolean;
   badge?: string;
-  url: string;
+  /** Single canonical link (used when there's no separate repo/demo split). */
+  url?: string;
+  /** Source code repository link. */
+  github?: string;
+  /** Hosted live demo link. */
+  demo?: string;
   description: string;
   tags: string[];
 }
@@ -83,7 +88,6 @@ export const experience = experienceJson as Experience[];
 export const navLinks = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "/ai-assistant", label: "AI Assistant" },
   { href: "#resume", label: "Resume" },

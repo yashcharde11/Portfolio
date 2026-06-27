@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { projects } from "@/lib/data";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
@@ -19,7 +19,10 @@ export function Projects() {
 
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         {projects.map((project, i) => {
-          const isLink = Boolean(project.url);
+          const hasSplitLinks = Boolean(project.github || project.demo);
+          // A single clickable card only when there's one canonical link and
+          // no separate repo/demo links (nested anchors aren't valid).
+          const isLink = Boolean(project.url) && !hasSplitLinks;
           const Wrapper = isLink ? "a" : "div";
           return (
             <Reveal key={project.number} index={i}>
@@ -69,6 +72,33 @@ export function Projects() {
                       <Badge key={tag}>{tag}</Badge>
                     ))}
                   </div>
+
+                  {hasSplitLinks ? (
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {project.github ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+                        >
+                          <Github className="size-4" />
+                          GitHub
+                        </a>
+                      ) : null}
+                      {project.demo ? (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3.5 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
+                        >
+                          <ExternalLink className="size-4" />
+                          Live Demo
+                        </a>
+                      ) : null}
+                    </div>
+                  ) : null}
                 </Card>
                 </motion.div>
               </Wrapper>
