@@ -7,29 +7,34 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   className?: string;
+  /** Override the default title sizing/styles. */
+  titleClassName?: string;
+  /** Override the default description sizing/styles. */
+  descriptionClassName?: string;
 }
 
-/** Consistent eyebrow + title + intro used at the top of every section. */
+/** Consistent, cinematic eyebrow + title + intro for the top of each section. */
 export function SectionHeading({
   eyebrow,
   title,
   description,
   className,
+  titleClassName,
+  descriptionClassName,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("max-w-2xl", className)}>
-      {eyebrow ? (
-        <Reveal>
-          <span className="font-mono text-sm tracking-tight text-primary">
-            {eyebrow}
-          </span>
-        </Reveal>
-      ) : null}
+    <div className={cn("max-w-3xl", className)}>
+      <Reveal>
+        <span className="flex items-center gap-3 font-mono text-sm uppercase tracking-[0.25em] text-primary">
+          <span className="h-px w-10 bg-gradient-to-r from-primary to-transparent" />
+          {eyebrow ?? "section"}
+        </span>
+      </Reveal>
       <Reveal index={1}>
         <h2
           className={cn(
-            "font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl",
-            eyebrow && "mt-3"
+            "display-xl mt-5 text-4xl text-foreground sm:text-5xl md:text-6xl",
+            titleClassName
           )}
         >
           {title}
@@ -37,7 +42,12 @@ export function SectionHeading({
       </Reveal>
       {description ? (
         <Reveal index={2}>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p
+            className={cn(
+              "mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg",
+              descriptionClassName
+            )}
+          >
             {description}
           </p>
         </Reveal>

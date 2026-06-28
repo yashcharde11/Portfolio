@@ -7,6 +7,7 @@ export function Skills() {
   return (
     <section id="skills" className="container scroll-mt-24 py-24">
       <SectionHeading
+        eyebrow="capabilities"
         title="Technical Skills"
         description="From LLM orchestration and RAG pipelines to data analytics and backend services."
       />

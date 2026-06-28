@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { resume } from "@/lib/data";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothScroll } from "@/components/smooth-scroll";
+import { SceneMount } from "@/components/three/scene-mount";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -60,13 +62,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${display.variable} ${sans.variable} ${mono.variable}`}
     >
-      <body className="font-sans">
+      <body className="grain font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
+          <SmoothScroll />
+          <SceneMount />
           {children}
         </ThemeProvider>
       </body>

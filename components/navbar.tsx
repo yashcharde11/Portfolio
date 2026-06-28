@@ -38,10 +38,10 @@ export function Navbar() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 rounded-full border border-border/60 bg-card/40 px-2 py-1 backdrop-blur-xl md:flex">
           {navLinks.map((link) => {
             const cls =
-              "rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground";
+              "rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground";
             return link.href.startsWith("/") ? (
               <Link key={link.href} href={link.href} className={cls}>
                 {link.label}

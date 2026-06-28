@@ -5,7 +5,14 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git branch *)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.moncy.dev)",
+      "PowerShell(npm install three @react-three/fiber @react-three/drei gsap lenis 2>&1)",
+      "PowerShell(node -e \"const p=require\\('./package.json'\\).dependencies; ['three','@react-three/fiber','@react-three/drei','gsap','lenis'].forEach\\(k=>console.log\\(k, p[k]\\)\\)\")",
+      "PowerShell(npm install @gsap/react 2>&1)",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "PowerShell(npx next build 2>&1)"
     ]
   }
 }

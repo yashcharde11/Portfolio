@@ -13,6 +13,7 @@ export function Projects() {
   return (
     <section id="projects" className="container scroll-mt-24 py-24">
       <SectionHeading
+        eyebrow="selected work"
         title="Projects"
         description="Production-grade, problem-solving AI projects — from multi-agent systems and offline RAG to memory-efficient ML at scale."
       />

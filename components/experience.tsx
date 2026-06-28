@@ -22,6 +22,7 @@ export function Experience() {
   return (
     <section id="experience" className="container scroll-mt-24 py-24">
       <SectionHeading
+        eyebrow="the journey"
         title="Experience"
         description="Hands-on work building agentic AI workflows and retrieval systems in production and research settings."
       />

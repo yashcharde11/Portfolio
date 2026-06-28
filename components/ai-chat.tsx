@@ -12,7 +12,7 @@ interface ChatMessage {
 }
 
 const SUGGESTIONS = [
-  "What is Yash's current role and experience?",
+  "What is Yash's experience and background?",
   "Walk me through his strongest projects.",
   "What's his core tech stack?",
   "Tell me about his education and certifications.",

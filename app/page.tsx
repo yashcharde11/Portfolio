@@ -1,6 +1,7 @@
 import { AmbientBackground } from "@/components/ambient-background";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+import { TechMarquee } from "@/components/tech-marquee";
 import { About } from "@/components/about";
 import { Experience } from "@/components/experience";
 import { ProjectsCTA } from "@/components/projects-cta";
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <TechMarquee />
         <About />
         <Experience />
         <ProjectsCTA />

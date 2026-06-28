@@ -10,6 +10,7 @@ export function ResumeSection() {
   return (
     <section id="resume" className="container scroll-mt-24 py-24">
       <SectionHeading
+        eyebrow="résumé"
         title="Resume"
         description="Prefer the one-pager? Read my full resume right here, or download a copy."
       />

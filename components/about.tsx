@@ -28,8 +28,11 @@ export function About() {
         </Reveal>
 
         <SectionHeading
+          eyebrow="about me"
           title="Engineer, focused on shipping real AI."
-          description={resume.tagline}
+          titleClassName="text-2xl sm:text-3xl md:text-4xl"
+          description="AI Engineer focused on building intelligent, production-ready AI applications. I specialize in Agentic AI, LLMs, Python, and automation, with hands-on experience developing scalable AI systems that solve real-world business problems. I'm passionate about learning, building, and pushing the boundaries of modern AI."
+          descriptionClassName="font-medium text-foreground/90 sm:text-lg"
         />
       </div>
 
