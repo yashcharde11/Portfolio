@@ -70,26 +70,28 @@ function Orb() {
       );
     }
     if (mesh.current) {
-      // Drift up and shrink slightly as the page scrolls away from the hero.
-      mesh.current.position.y = scrollState.progress * 3.2;
-      const s = 1 - scrollState.progress * 0.25;
-      mesh.current.scale.setScalar(Math.max(0.6, s));
+      // Drift up and shrink as the page scrolls away from the hero.
+      mesh.current.position.y = scrollState.progress * 2.6;
+      const s = 1 - scrollState.progress * 0.3;
+      mesh.current.scale.setScalar(Math.max(0.55, s));
     }
   });
 
   return (
-    <group ref={group} position={[1.7, 0.2, 0]}>
+    // Kept on the left and pushed back so it never washes out the right-hand
+    // content (cards, role text); it sits behind large headings instead.
+    <group ref={group} position={[-2.4, 0.3, -1.4]}>
       <Float speed={1.4} rotationIntensity={0.6} floatIntensity={1.1}>
         <mesh ref={mesh}>
-          <icosahedronGeometry args={[1.5, 12]} />
+          <icosahedronGeometry args={[1.15, 12]} />
           <MeshDistortMaterial
             color="#7c3aed"
-            emissive="#4c1d95"
-            emissiveIntensity={0.5}
-            roughness={0.18}
-            metalness={0.65}
-            distort={0.42}
-            speed={1.6}
+            emissive="#3b1672"
+            emissiveIntensity={0.35}
+            roughness={0.2}
+            metalness={0.6}
+            distort={0.36}
+            speed={1.5}
           />
         </mesh>
       </Float>
@@ -111,9 +113,9 @@ export default function Scene() {
     >
       {/* bold rim lighting in the brand violet→cyan range */}
       <ambientLight intensity={0.35} />
-      <pointLight position={[6, 4, 6]} intensity={120} color="#8b5cf6" />
-      <pointLight position={[-6, -2, 2]} intensity={90} color="#22d3ee" />
-      <pointLight position={[0, 5, -4]} intensity={70} color="#ec4899" />
+      <pointLight position={[6, 4, 6]} intensity={70} color="#8b5cf6" />
+      <pointLight position={[-6, -2, 2]} intensity={55} color="#22d3ee" />
+      <pointLight position={[0, 5, -4]} intensity={40} color="#ec4899" />
 
       <Starfield />
       <Orb />

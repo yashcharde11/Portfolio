@@ -1,6 +1,6 @@
 import { AmbientBackground } from "@/components/ambient-background";
 import { Navbar } from "@/components/navbar";
-import { Hero } from "@/components/hero";
+import { CinematicIntro } from "@/components/cinematic-intro";
 import { TechMarquee } from "@/components/tech-marquee";
 import { About } from "@/components/about";
 import { Experience } from "@/components/experience";
@@ -16,7 +16,7 @@ export default function Home() {
       <AmbientBackground />
       <Navbar />
       <main>
-        <Hero />
+        <CinematicIntro />
         <TechMarquee />
         <About />
         <Experience />
